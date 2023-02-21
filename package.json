@@ -1,23 +1,20 @@
 {
-  "name": "@bornfight/gocart",
-  "version": "1.0.9",
-  "description": "goCart.js - Complete Shopify Ajax cart from Bornfight",
+  "name": "@nutima.agency/nutima-cart.js",
+  "version": "1.0.0",
+  "description": "nutima-cart.js - Complete Shopify Ajax Cart",
   "keywords": [
     "shopify",
     "ajax",
     "cart",
     "drawer"
   ],
-  "homepage": "",
-  "bugs": {
-    "url": ""
-  },
+  "homepage": "https://github.com/nutimacode/nutima-cart.js",
   "repository": {
     "type": "",
-    "url": ""
+    "url": "https://github.com/nutimacode/nutima-cart.js"
   },
   "license": "MIT",
-  "author": "Bornfight <hello@bornfight.com> (https://www.bornfight.com/)",
+  "author": "nutima <hello@nutimacode.com> (https://www.nutimacode.com/)",
   "main": "build/index.js",
   "scripts": {
     "build": "node scripts/build.js",
@@ -110,7 +107,7 @@
   "dependencies": {
     "@shopify/theme-currency": "^3.1.0",
     "form-serialize": "^0.7.2",
-    "node-sass": "^4.14.1",
+    "sass": "^1.58.3",
     "whatwg-fetch": "^3.4.1"
   },
   "devDependencies": {
