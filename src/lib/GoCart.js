@@ -40,6 +40,7 @@ class GoCart {
             labelCartIsEmpty: 'Your Cart is currently empty!',
             labelQuantity: 'Quantity:',
             labelRemove: 'Remove',
+            hidedElements: []
         };
 
         this.defaults = Object.assign({}, defaults, options);
@@ -264,6 +265,7 @@ class GoCart {
             } else {
                 this.renderDrawerCart(cart);
                 this.cartDrawerFooter.classList.remove('is-invisible');
+                this.showElements();
                 if ((typeof callback) === 'function') {
                     callback(cart);
                 }
@@ -274,6 +276,7 @@ class GoCart {
         } else {
             this.renderMiniCart(cart);
             this.cartMiniCartFooter.classList.remove('is-invisible');
+            this.showElements();
             if ((typeof callback) === 'function') {
                 callback(cart);
             }
@@ -426,16 +429,36 @@ class GoCart {
         });
     }
 
+    hideElements(){
+        this.hidedElements.forEach((selector) => {
+            const el = document.querySelector(selector);
+            if(el){
+                el.classList.add("is-invisible")
+            }
+        });
+    }
+
+    showElements(){
+        this.hidedElements.forEach((selector) => {
+            const el = document.querySelector(selector);
+            if(el){
+                el.classList.remove("is-invisible")
+            }
+        });
+    }
+
     renderBlankCartDrawer() {
         this.cartDrawerSubTotal.parentNode.classList.add('is-invisible');
         this.clearCartDrawer();
         this.cartDrawerContent.innerHTML = `<div class="go-cart__empty">${this.labelCartIsEmpty}</div>`;
+        this.hideElements();
     }
 
     renderBlankMiniCart() {
         this.cartMiniCartSubTotal.parentNode.classList.add('is-invisible');
         this.clearMiniCart();
         this.cartMiniCartContent.innerHTML = `<div class="go-cart__empty">${this.labelCartIsEmpty}</div>`;
+        this.hideElements();
     }
 
     clearCartDrawer() {
