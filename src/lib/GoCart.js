@@ -23,6 +23,7 @@ class GoCart {
             cartMiniCartSubTotal: '.js-go-cart-mini-cart-subtotal',
             cartMiniCartFooter: '.js-go-cart-mini-cart-footer',
             cartMiniCartClose: '.js-go-cart-mini-cart-close',
+            cartMiniCartBlankWrapper: '.js-go-cart-mini-cart-blank',
             cartTrigger: '.js-go-cart-trigger',
             cartOverlay: '.js-go-cart-overlay',
             cartCount: '.js-go-cart-counter',
@@ -79,6 +80,7 @@ class GoCart {
         this.labelQuantity = this.defaults.labelQuantity;
         this.labelRemove = this.defaults.labelRemove;
         this.hidedElements = this.defaults.hidedElements;
+        this.cartMiniCartBlankWrapper = document.querySelector(this.defaults.cartMiniCartBlankWrapper);
 
         this.init();
 
@@ -446,6 +448,7 @@ class GoCart {
                 el.classList.add("is-invisible")
             }
         });
+        this.cartMiniCartBlankWrapper.classList.remove("is-invisible");
     }
 
     showElements(){
@@ -455,6 +458,7 @@ class GoCart {
                 el.classList.remove("is-invisible")
             }
         });
+        this.cartMiniCartBlankWrapper.classList.add("is-invisible");
     }
 
     renderBlankCartDrawer() {
@@ -493,10 +497,14 @@ class GoCart {
 
     openMiniCart() {
         this.cartMiniCart.classList.add('is-open');
+        let event = new Event('nutima-cart:minicart-opened');
+        document.dispatchEvent(event);
     }
 
     closeMiniCart() {
         this.cartMiniCart.classList.remove('is-open');
+        let event = new Event('nutima-cart:minicart-closed');
+        document.dispatchEvent(event);
     }
 
     openFailModal() {
