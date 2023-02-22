@@ -22,6 +22,7 @@ class GoCart {
             cartMiniCartContent: '.js-go-cart-mini-cart-content',
             cartMiniCartSubTotal: '.js-go-cart-mini-cart-subtotal',
             cartMiniCartFooter: '.js-go-cart-mini-cart-footer',
+            cartMiniCartClose: '.js-go-cart-mini-cart-close',
             cartTrigger: '.js-go-cart-trigger',
             cartOverlay: '.js-go-cart-overlay',
             cartCount: '.js-go-cart-counter',
@@ -59,6 +60,7 @@ class GoCart {
         this.cartMiniCartContent = document.querySelector(this.defaults.cartMiniCartContent);
         this.cartMiniCartSubTotal = document.querySelector(this.defaults.cartMiniCartSubTotal);
         this.cartMiniCartFooter = document.querySelector(this.defaults.cartMiniCartFooter);
+        this.cartMiniCartClose = document.querySelectorAll(this.defaults.cartMiniCartClose);
         this.cartTrigger = document.querySelectorAll(this.defaults.cartTrigger);
         this.cartOverlay = document.querySelector(this.defaults.cartOverlay);
         this.cartCount = document.querySelectorAll(this.defaults.cartCount);
@@ -135,6 +137,13 @@ class GoCart {
                 this.closeCartDrawer();
                 this.closeCartOverlay();
             });
+        }else{
+            this.cartMiniCartClose.forEach(el => {
+                el.addEventListener('click', () => {
+                    this.closeMiniCart();
+                    this.closeCartOverlay();
+                });
+            })
         }
 
         if (this.displayModal) {
