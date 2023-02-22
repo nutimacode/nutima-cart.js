@@ -60,7 +60,7 @@ class GoCart {
         this.cartMiniCartFooter = document.querySelector(this.defaults.cartMiniCartFooter);
         this.cartTrigger = document.querySelectorAll(this.defaults.cartTrigger);
         this.cartOverlay = document.querySelector(this.defaults.cartOverlay);
-        this.cartCount = document.querySelector(this.defaults.cartCount);
+        this.cartCount = document.querySelectorAll(this.defaults.cartCount);
         this.addToCart = document.querySelectorAll(this.defaults.addToCart);
         this.removeFromCart = this.defaults.removeFromCart;
         this.removeFromCartNoDot = this.defaults.removeFromCartNoDot;
@@ -231,7 +231,9 @@ class GoCart {
     }
 
     cartItemCount(cart) {
-        this.cartCount.innerHTML = cart.item_count;
+        this.cartCount.forEach((el) => {
+            el.innerHTML = cart.item_count;
+        })
     }
 
     fetchAndOpenCart() {
