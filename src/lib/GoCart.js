@@ -76,6 +76,7 @@ class GoCart {
         this.labelCartIsEmpty = this.defaults.labelCartIsEmpty;
         this.labelQuantity = this.defaults.labelQuantity;
         this.labelRemove = this.defaults.labelRemove;
+        this.hidedElements = this.defaults.hidedElements;
 
         this.init();
 
