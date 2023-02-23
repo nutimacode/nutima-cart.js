@@ -480,7 +480,9 @@ class GoCart {
             item.parentNode.classList.add('is-invisible');
         });
         this.clearMiniCart();
-        this.cartMiniCartContent.innerHTML = `<div class="go-cart__empty">${this.labelCartIsEmpty}</div>`;
+        this.cartMiniCartContent.forEach((item) => {
+            item.innerHTML = `<div class="go-cart__empty">${this.labelCartIsEmpty}</div>`;
+        })
         this.hideElements();
     }
 
@@ -489,7 +491,9 @@ class GoCart {
     }
 
     clearMiniCart() {
-        this.cartMiniCartContent.innerHTML = '';
+        this.cartMiniCartContent.forEach((item) => {
+            item.innerHTML = '';
+        });
     }
 
     clearCartModal() {
