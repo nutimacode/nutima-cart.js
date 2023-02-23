@@ -467,6 +467,10 @@ class GoCart {
                 }
             });
         });
+        
+        const cartUpdateEvent = new Event("nutima-cart:minicart-updated");
+        document.dispatchEvent(cartUpdateEvent);
+        window.nutimaCartData = cart;
     }
 
     hideElements(){
