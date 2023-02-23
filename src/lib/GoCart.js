@@ -68,6 +68,7 @@ class GoCart {
         this.cartMiniCartDiscountBlock = document.querySelectorAll(this.defaults.cartMiniCartDiscountBlock);
         this.cartMiniCartFooter = document.querySelector(this.defaults.cartMiniCartFooter);
         this.cartMiniCartClose = document.querySelectorAll(this.defaults.cartMiniCartClose);
+        this.cartMiniCartBlankWrapper = document.querySelectorAll(this.defaults.cartMiniCartBlankWrapper);
         this.cartTrigger = document.querySelectorAll(this.defaults.cartTrigger);
         this.cartOverlay = document.querySelector(this.defaults.cartOverlay);
         this.cartCount = document.querySelectorAll(this.defaults.cartCount);
@@ -86,7 +87,6 @@ class GoCart {
         this.labelQuantity = this.defaults.labelQuantity;
         this.labelRemove = this.defaults.labelRemove;
         this.hidedElements = this.defaults.hidedElements;
-        this.cartMiniCartBlankWrapper = document.querySelector(this.defaults.cartMiniCartBlankWrapper);
 
         this.init();
 
@@ -476,8 +476,9 @@ class GoCart {
                 el.classList.add("is-invisible")
             });
         });
-        if(this.cartMiniCartBlankWrapper)
-            this.cartMiniCartBlankWrapper.classList.remove("is-invisible");
+        this.cartMiniCartBlankWrapper.forEach((item) => {
+            item.classList.remove("is-invisible");
+        });
     }
 
     showElements(){
@@ -487,8 +488,9 @@ class GoCart {
                 el.classList.remove("is-invisible")
             });
         });
-        if(this.cartMiniCartBlankWrapper)
-            this.cartMiniCartBlankWrapper.classList.add("is-invisible");
+        this.cartMiniCartBlankWrapper.forEach((item) => {
+            item.classList.add("is-invisible");
+        });
     }
 
     renderBlankCartDrawer() {
