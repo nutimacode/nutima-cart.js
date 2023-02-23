@@ -408,7 +408,7 @@ class GoCart {
                             </div>
                         </div>
                     </div>
-                    <div class="go-cart-item__price">${formatMoney(item.line_price, this.moneyFormat)}</div>
+                    <div class="go-cart-item__price">${item.line_price !== item.original_line_price ? '<span class="go-cart-item__price--original">' + formatMoney(item.original_line_price, this.moneyFormat) + '</span>' : ''} ${formatMoney(item.line_price, this.moneyFormat)}</div>
                     <a class="go-cart-item__remove ${this.removeFromCartNoDot}">${this.labelRemove}</a>
                 </div>
             `;

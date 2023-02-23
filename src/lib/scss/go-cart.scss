@@ -335,6 +335,10 @@ $go-cart-z-index-base: 0 !default;
         position: absolute;
         bottom: 25px;
         right: 0;
+
+        &--original{
+            text-decoration: line-through;
+        }
     }
 
     &__remove {
