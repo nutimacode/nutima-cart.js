@@ -484,7 +484,7 @@ class GoCart {
         this.hidedElements.forEach((selector) => {
             const els = document.querySelectorAll(selector);
             els.forEach((el) => {
-                el.classList.add("is-invisible")
+                el.classList.remove("is-invisible")
             });
         });
         if(this.cartMiniCartBlankWrapper)
