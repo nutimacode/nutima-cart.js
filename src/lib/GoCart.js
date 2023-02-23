@@ -471,10 +471,10 @@ class GoCart {
 
     hideElements(){
         this.hidedElements.forEach((selector) => {
-            const el = document.querySelector(selector);
-            if(el){
+            const els = document.querySelectorAll(selector);
+            els.forEach((el) => {
                 el.classList.add("is-invisible")
-            }
+            });
         });
         if(this.cartMiniCartBlankWrapper)
             this.cartMiniCartBlankWrapper.classList.remove("is-invisible");
@@ -482,10 +482,10 @@ class GoCart {
 
     showElements(){
         this.hidedElements.forEach((selector) => {
-            const el = document.querySelector(selector);
-            if(el){
-                el.classList.remove("is-invisible")
-            }
+            const els = document.querySelectorAll(selector);
+            els.forEach((el) => {
+                el.classList.add("is-invisible")
+            });
         });
         if(this.cartMiniCartBlankWrapper)
             this.cartMiniCartBlankWrapper.classList.add("is-invisible");
