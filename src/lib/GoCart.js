@@ -432,11 +432,11 @@ class GoCart {
             item.parentNode.classList.remove('is-invisible');
             if (!cart.total_discount) {
                 this.cartMiniCartDiscountBlock.forEach((el) => {
-                    el.parentNode.classList.add('is-invisible');
+                    el.classList.add('is-invisible');
                 });
             }else{
                 this.cartMiniCartDiscountBlock.forEach((el) => {
-                    el.parentNode.classList.remove('is-invisible');
+                    el.classList.remove('is-invisible');
                 });
             }
         });
