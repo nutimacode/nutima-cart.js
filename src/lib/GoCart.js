@@ -22,6 +22,7 @@ class GoCart {
             cartMiniCartContent: '.js-go-cart-mini-cart-content',
             cartMiniCartSubTotal: '.js-go-cart-mini-cart-subtotal',
             cartMiniCartOrgTotal: '.js-go-cart-mini-cart-org-total',
+            cartMiniCartDiscountBlock: '.js-go-cart-mini-cart-discount-block',
             cartMiniCartDiscount: '.js-go-cart-mini-cart-discount',
             cartMiniCartFooter: '.js-go-cart-mini-cart-footer',
             cartMiniCartClose: '.js-go-cart-mini-cart-close',
@@ -64,6 +65,7 @@ class GoCart {
         this.cartMiniCartSubTotal = document.querySelectorAll(this.defaults.cartMiniCartSubTotal);
         this.cartMiniCartOrgTotal = document.querySelectorAll(this.defaults.cartMiniCartOrgTotal);
         this.cartMiniCartDiscount = document.querySelectorAll(this.defaults.cartMiniCartDiscount);
+        this.cartMiniCartDiscountBlock = document.querySelectorAll(this.defaults.cartMiniCartDiscountBlock);
         this.cartMiniCartFooter = document.querySelector(this.defaults.cartMiniCartFooter);
         this.cartMiniCartClose = document.querySelectorAll(this.defaults.cartMiniCartClose);
         this.cartTrigger = document.querySelectorAll(this.defaults.cartTrigger);
@@ -428,6 +430,15 @@ class GoCart {
         this.cartMiniCartDiscount.forEach((item) => {
             item.innerHTML = formatMoney(cart.total_discount, this.moneyFormat);
             item.parentNode.classList.remove('is-invisible');
+            if (!cart.total_discount) {
+                this.cartMiniCartDiscountBlock.forEach((el) => {
+                    el.parentNode.classList.add('is-invisible');
+                });
+            }else{
+                this.cartMiniCartDiscountBlock.forEach((el) => {
+                    el.parentNode.classList.remove('is-invisible');
+                });
+            }
         });
         const removeFromCart = document.querySelectorAll(this.removeFromCart);
         removeFromCart.forEach((item) => {
