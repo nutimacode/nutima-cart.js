@@ -302,6 +302,8 @@ class GoCart {
     }
 
     addItemToCartHandler(product) {
+        const addToCartEvent = new Event("nutima-cart:add");
+        document.dispatchEvent(addToCartEvent, product);
         return this.displayModal ? this.fetchAndOpenModal(product) : this.fetchAndOpenCart();
     }
 
