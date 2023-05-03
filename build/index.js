@@ -1,6 +1,6 @@
 /*!
  * 
- *   @nutima.agency/nutima-cart.js v1.0.20
+ *   @nutima.agency/nutima-cart.js v1.0.21
  *   https://github.com/nutimacode/nutima-cart.js
  * 
  *   Copyright (c) nutima (https://www.nutimacode.com/)
