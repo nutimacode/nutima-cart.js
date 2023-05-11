@@ -293,6 +293,7 @@ class GoCart {
 
     fetchHandler(cart, callback) {
         this.cartItemCount(cart);
+        window.nutimaCartData = cart;
         if (this.isDrawerMode) {
             if (cart.item_count === 0) {
                 this.renderBlankCartDrawer();
