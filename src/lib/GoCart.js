@@ -241,6 +241,14 @@ class GoCart {
     }
 
     changeItemQuantity(line, quantity, type) {
+        const changeCartEvent = new CustomEvent("nutima-cart:change", {
+            detail: {
+                type: type,
+                line: line
+            }
+        });
+        document.dispatchEvent(changeCartEvent);
+        
         window.fetch('/cart/change.js', {
             method: 'POST',
             credentials: 'same-origin',
@@ -252,13 +260,6 @@ class GoCart {
             .then((response) => response.json())
             .then(() => {
                 this.fetchCart()
-                const changeCartEvent = new CustomEvent("nutima-cart:change", {
-                    detail: {
-                        type: type,
-                        line: line
-                    }
-                });
-                document.dispatchEvent(changeCartEvent);
             })
             .catch((error) => {
                 this.ajaxRequestFail();
