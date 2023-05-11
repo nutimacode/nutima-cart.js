@@ -215,6 +215,12 @@ class GoCart {
     }
 
     removeItem(line) {
+        
+        const removeCartEvent = new CustomEvent("nutima-cart:remove", {
+            detail: line
+        });
+        document.dispatchEvent(removeCartEvent);
+
         const quantity = 0;
         window.fetch('/cart/change.js', {
             method: 'POST',
@@ -227,10 +233,6 @@ class GoCart {
             .then((response) => response.json())
             .then(() => {
                 this.fetchCart();
-                const removeCartEvent = new CustomEvent("nutima-cart:remove", {
-                    detail: line
-                });
-                document.dispatchEvent(removeCartEvent);
             })
             .catch((error) => {
                 this.ajaxRequestFail();
