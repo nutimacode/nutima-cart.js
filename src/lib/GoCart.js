@@ -216,6 +216,13 @@ class GoCart {
 
     removeItem(line) {
         const quantity = 0;
+
+        const removeCartEvent = new CustomEvent("nutima-cart:remove", {
+            detail: line
+        });
+        document.dispatchEvent(removeCartEvent);
+
+
         window.fetch('/cart/change.js', {
             method: 'POST',
             credentials: 'same-origin',
@@ -232,7 +239,17 @@ class GoCart {
             });
     }
 
-    changeItemQuantity(line, quantity) {
+    changeItemQuantity(line, quantity, type) {
+
+        const changeCartEvent = new CustomEvent("nutima-cart:change", {
+            detail: {
+                type: type,
+                line: line
+            }
+        });
+        document.dispatchEvent(changeCartEvent);
+
+
         window.fetch('/cart/change.js', {
             method: 'POST',
             credentials: 'same-origin',
@@ -376,7 +393,7 @@ class GoCart {
             item.addEventListener('click', () => {
                 const line = item.parentNode.parentNode.parentNode.parentNode.getAttribute('data-line');
                 const quantity = Number(item.parentNode.querySelector(this.itemQuantity).value) + 1;
-                this.changeItemQuantity(line, quantity);
+                this.changeItemQuantity(line, quantity, "increase");
             });
         });
         const itemQuantityMinus = document.querySelectorAll(this.itemQuantityMinus);
@@ -384,7 +401,7 @@ class GoCart {
             item.addEventListener('click', () => {
                 const line = item.parentNode.parentNode.parentNode.parentNode.getAttribute('data-line');
                 const quantity = Number(item.parentNode.querySelector(this.itemQuantity).value) - 1;
-                this.changeItemQuantity(line, quantity);
+                this.changeItemQuantity(line, quantity, "decrease");
                 if (Number((item.parentNode.querySelector(this.itemQuantity).value - 1)) === 0) {
                     GoCart.removeItemAnimation(item.parentNode.parentNode.parentNode.parentNode);
                 }
@@ -457,7 +474,7 @@ class GoCart {
             item.addEventListener('click', () => {
                 const line = item.parentNode.parentNode.parentNode.parentNode.getAttribute('data-line');
                 const quantity = Number(item.parentNode.querySelector(this.itemQuantity).value) + 1;
-                this.changeItemQuantity(line, quantity);
+                this.changeItemQuantity(line, quantity, "increase");
             });
         });
         const itemQuantityMinus = document.querySelectorAll(this.itemQuantityMinus);
@@ -465,7 +482,7 @@ class GoCart {
             item.addEventListener('click', () => {
                 const line = item.parentNode.parentNode.parentNode.parentNode.getAttribute('data-line');
                 const quantity = Number(item.parentNode.querySelector(this.itemQuantity).value) - 1;
-                this.changeItemQuantity(line, quantity);
+                this.changeItemQuantity(line, quantity, "decrease");
                 if (Number((item.parentNode.querySelector(this.itemQuantity).value - 1)) === 0) {
                     GoCart.removeItemAnimation(item.parentNode.parentNode.parentNode.parentNode);
                 }
