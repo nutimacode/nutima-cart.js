@@ -207,7 +207,7 @@ class GoCart {
             body: JSON.stringify(formData),
         })
             .then((response) => response.json())
-            .then((product) => this.addItemToCartHandler(product))
+            .then((product) => this.addItemToCartHandler(product, formData.quantity))
             .catch((error) => {
                 this.ajaxRequestFail();
                 throw new Error(error);
@@ -248,7 +248,7 @@ class GoCart {
             }
         });
         document.dispatchEvent(changeCartEvent);
-        
+
         window.fetch('/cart/change.js', {
             method: 'POST',
             credentials: 'same-origin',
@@ -320,9 +320,12 @@ class GoCart {
         }
     }
 
-    addItemToCartHandler(product) {
+    addItemToCartHandler(product, quantity) {
         const addToCartEvent = new CustomEvent("nutima-cart:add", {
-            detail: product
+            detail: {
+                product: product,
+                quantity: quantity
+            }
         });
         document.dispatchEvent(addToCartEvent);
         return this.displayModal ? this.fetchAndOpenModal(product) : this.fetchAndOpenCart();
